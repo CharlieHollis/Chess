@@ -37,6 +37,7 @@ while running:
 
     display.blit(rook[0],(100,46))
     display.blit(rook[1],(100,746))
+    
     pygame.display.update()
     clock.tick(60)
 
