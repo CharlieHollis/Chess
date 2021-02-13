@@ -7,8 +7,8 @@ import pieces as pc
 pygame.init()
 
 height, width = 1000,1000
-
 display = pygame.display.set_mode((width,height))
+
 darkSquare = (118,150,86)
 white = (255,255,255)
 selected = (186,202,43)
@@ -70,9 +70,19 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         if event.type == pygame.MOUSEBUTTONDOWN:
-            
-            # print(pygame.mouse.get_pos())
-            pass
+            mousePressedPos = pygame.mouse.get_pos()
+            if mousePressedPos[0] <= 99:
+                print("Out")
+            if mousePressedPos[0] >= 900:
+                print("Out")
+            if mousePressedPos[1] <= 99:
+                print("Out")
+            if mousePressedPos[1] >= 900:
+                print("Out")
+            else:
+                pressx = mousePressedPos[0]; pressy = mousePressedPos[1]
+                pressx = (pressx - 100) / 100; pressy = (pressy - 100) / 100
+                print(str(pressx)[0], str(pressy)[0])
 
     display.blit(wood, (0,0)); display.blit(wood, (894,0)); display.blit(wood, (0,894)); display.blit(wood, (894,894))      # Creates Background
 
