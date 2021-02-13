@@ -49,7 +49,6 @@ for i in range(8):
         else:
              boardPc[i].append(pc.pieces(os.path.join("imgs","blank.png"), 100+j*100, 100+i*100, "blank", i+j, "blank"))           
 
-
 for i in range(8):
     boardBg.append([])
     for j in range(8):
@@ -57,12 +56,12 @@ for i in range(8):
             boardBg[i].append(bs.board(os.path.join("imgs","lightSquare.png"), 100+j*100, 100+i*100, i+j))
         else: boardBg[i].append(bs.board(os.path.join("imgs","darkSquare.png"), 100+j*100, 100+i*100, i+j))
 
-
 wood = pygame.image.load(os.path.join("imgs","wood.jpg"))
-# rook = (pygame.image.load(os.path.join("imgs","WhiteRook.png")),pygame.image.load(os.path.join("imgs","BlackRook.png")))
 
 
 clock = pygame.time.Clock()
+
+clicked = False
 running = True
 
 while running:
@@ -71,18 +70,13 @@ while running:
             running = False
         if event.type == pygame.MOUSEBUTTONDOWN:
             mousePressedPos = pygame.mouse.get_pos()
-            if mousePressedPos[0] <= 99:
-                print("Out")
-            if mousePressedPos[0] >= 900:
-                print("Out")
-            if mousePressedPos[1] <= 99:
-                print("Out")
-            if mousePressedPos[1] >= 900:
-                print("Out")
-            else:
-                pressx = mousePressedPos[0]; pressy = mousePressedPos[1]
-                pressx = (pressx - 100) / 100; pressy = (pressy - 100) / 100
-                print(str(pressx)[0], str(pressy)[0])
+            if mousePressedPos[0] > 99 and mousePressedPos[0] < 901 and not clicked:
+                if  mousePressedPos[1] > 99 and mousePressedPos[1] < 901:
+                    pressx = mousePressedPos[0]; pressy = mousePressedPos[1]
+                    pressx = (pressx - 100) / 100; pressy = (pressy - 100) / 100
+                    print(str(pressx)[0], str(pressy)[0])
+            if clicked:
+                
 
     display.blit(wood, (0,0)); display.blit(wood, (894,0)); display.blit(wood, (0,894)); display.blit(wood, (894,894))      # Creates Background
 
