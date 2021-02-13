@@ -19,20 +19,43 @@ boardPc = []
 for i in range(8):
     boardPc.append([])
     for j in range(8):
-        if i != 0 or i != 1 or i != 6 or i != 7:
-            boardPc[i].append(pc.pieces(os.path.join("imgs","blank.png"), 100+i*100, 100+j*100, "blank", i+j, "blank"))
-        if i == 0 or i == 1:
+        if i == 0 :
             if j == 0 or j == 7:
-                boardPc[i].append(pc.pieces(os.path.join("imgs","BlackRook.png"), 100+i*100, 100+j*100, "BlackRook", i+j, "BlackRook"))
-            
+                boardPc[i].append(pc.pieces(os.path.join("imgs","BlackRook.png"), 100+j*100, 100+i*100, "BlackRook", i+j, "BlackRook"))
+            elif j == 1 or j == 6:
+                boardPc[i].append(pc.pieces(os.path.join("imgs","BlackKnight.png"), 100+j*100, 100+i*100, "BlackKnight", i+j, "BlackKnight"))
+            elif j == 2 or j == 5:
+                boardPc[i].append(pc.pieces(os.path.join("imgs","BlackBishop.png"), 100+j*100, 100+i*100, "BlackBishop", i+j, "BlackBishop"))
+            elif j == 3:
+                boardPc[i].append(pc.pieces(os.path.join("imgs","BlackQueen.png"), 100+j*100, 100+i*100, "BlackQueen", i+j, "BlackQueen"))
+            elif j == 4:
+                boardPc[i].append(pc.pieces(os.path.join("imgs","BlackKing.png"), 100+j*100, 100+i*100, "BlackKing", i+j, "BlackKing"))
+        elif i == 1:
+            boardPc[i].append(pc.pieces(os.path.join("imgs","BlackPawn.png"), 100+j*100, 100+i*100, "BlackPawn", i+j, "BlackPawn"))
+        
+        elif i == 7 :
+            if j == 0 or j == 7:
+                boardPc[i].append(pc.pieces(os.path.join("imgs","WhiteRook.png"), 100+j*100, 100+i*100, "WhiteRook", i+j, "WhiteRook"))
+            elif j == 1 or j == 6:
+                boardPc[i].append(pc.pieces(os.path.join("imgs","WhiteKnight.png"), 100+j*100, 100+i*100, "WhiteKnight", i+j, "WhiteKnight"))
+            elif j == 2 or j == 5:
+                boardPc[i].append(pc.pieces(os.path.join("imgs","WhiteBishop.png"), 100+j*100, 100+i*100, "WhiteBishop", i+j, "WhiteBishop"))
+            elif j == 3:
+                boardPc[i].append(pc.pieces(os.path.join("imgs","WhiteQueen.png"), 100+j*100, 100+i*100, "BlacWhiteQueenkQueen", i+j, "WhiteQueen"))
+            elif j == 4:
+                boardPc[i].append(pc.pieces(os.path.join("imgs","WhiteKing.png"), 100+j*100, 100+i*100, "WhiteKing", i+j, "WhiteKing"))
+        elif i == 6:
+            boardPc[i].append(pc.pieces(os.path.join("imgs","WhitePawn.png"), 100+j*100, 100+i*100, "WhitePawn", i+j, "WhitePawn"))
+        else:
+             boardPc[i].append(pc.pieces(os.path.join("imgs","blank.png"), 100+j*100, 100+i*100, "blank", i+j, "blank"))           
 
 
 for i in range(8):
     boardBg.append([])
     for j in range(8):
         if ((i+1)+(j+1)) % 2 == 0:
-            boardBg[i].append(bs.board(os.path.join("imgs","lightSquare.png"), 100+i*100, 100+j*100, i+j))
-        else: boardBg[i].append(bs.board(os.path.join("imgs","darkSquare.png"), 100+i*100, 100+j*100, i+j))
+            boardBg[i].append(bs.board(os.path.join("imgs","lightSquare.png"), 100+j*100, 100+i*100, i+j))
+        else: boardBg[i].append(bs.board(os.path.join("imgs","darkSquare.png"), 100+j*100, 100+i*100, i+j))
 
 
 wood = pygame.image.load(os.path.join("imgs","wood.jpg"))
