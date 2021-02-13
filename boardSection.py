@@ -1,8 +1,10 @@
+import pygame
+
 class board(object):
 
-    def __init__(self, colour, posx, posy, value):
+    def __init__(self, imagePath, posx, posy, value):
 
-        self.colour = colour
+        self.colour = pygame.image.load(imagePath)
         self.posx = posx
         self.posy = posy
         self.value = value
