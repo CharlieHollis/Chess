@@ -2,6 +2,7 @@ import pygame
 import os
 
 import boardSection as bs 
+import pieces as pc
 
 pygame.init()
 
@@ -13,6 +14,18 @@ white = (255,255,255)
 selected = (186,202,43)
 
 boardBg = []
+boardPc = []
+
+for i in range(8):
+    boardPc.append([])
+    for j in range(8):
+        if i != 0 or i != 1 or i != 6 or i != 7:
+            boardPc[i].append(pc.pieces(os.path.join("imgs","blank.png"), 100+i*100, 100+j*100, "blank", i+j, "blank"))
+        if i == 0 or i == 1:
+            if j == 0 or j == 7:
+                boardPc[i].append(pc.pieces(os.path.join("imgs","BlackRook.png"), 100+i*100, 100+j*100, "BlackRook", i+j, "BlackRook"))
+            
+
 
 for i in range(8):
     boardBg.append([])
@@ -23,7 +36,7 @@ for i in range(8):
 
 
 wood = pygame.image.load(os.path.join("imgs","wood.jpg"))
-rook = (pygame.image.load(os.path.join("imgs","WhiteRook.png")),pygame.image.load(os.path.join("imgs","BlackRook.png")))
+# rook = (pygame.image.load(os.path.join("imgs","WhiteRook.png")),pygame.image.load(os.path.join("imgs","BlackRook.png")))
 
 
 clock = pygame.time.Clock()
@@ -44,9 +57,13 @@ while running:
         for j in range(len(boardBg[i])):
             display.blit(boardBg[i][j].colour, (boardBg[i][j].posx, boardBg[i][j].posy))
 
+    for i in range(len(boardPc)):
+        for j in range(len(boardPc[i])):
+            display.blit(boardPc[i][j].img, (boardPc[i][j].posx, boardPc[i][j].posy))
 
-    display.blit(rook[0],(100,100))
-    display.blit(rook[1],(100,800))
+
+    # display.blit(rook[0],(100,100))
+    # display.blit(rook[1],(100,800))
 
     pygame.display.update()
     clock.tick(60)
