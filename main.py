@@ -46,9 +46,9 @@ while running:
     #             pygame.draw.rect(display, white, (100+i*100,46+j*100,100,100))
     #         else: pygame.draw.rect(display, darkSquare, (100+i*100,46+j*100,100,100))
 
-    for i in len(board):
-        for j in range(board[i])
-            pygame.draw.rect(display, board[i][j].color, (board[i][j].posx,board[i][j].posy,board[i][j].sizex,board[i][j].sizey))
+    for i in range(len(board)):
+        for j in range(len(board[i])):
+            pygame.draw.rect(display, board[i][j].colour, (board[i][j].posx,board[i][j].posy,board[i][j].sizex,board[i][j].sizey))
 
     # display.blit(rook[0],(100,46))
     # display.blit(rook[1],(100,746))
