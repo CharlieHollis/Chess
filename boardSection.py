@@ -1,10 +1,11 @@
 class board(object):
 
-    def __init__(self, colour, posx, posy):
+    def __init__(self, colour, posx, posy, value):
 
         self.colour = colour
         self.posx = posx
         self.posy = posy
+        self.value = value
 
         self.arrayPosx, self.arrayPosy = self.findArray()
         
