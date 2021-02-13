@@ -6,6 +6,7 @@ class board(object):
         self.posx = posx
         self.posy = posy
         self.value = value
+        self.sizex, self.sizey = 100, 100
 
         self.arrayPosx, self.arrayPosy = self.findArray()
         
