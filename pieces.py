@@ -3,19 +3,14 @@ import pygame
 class pieces(object):
 
     def __init__(self, imagePath, posx, posy, colour, value, name):
-        if name.lower() != "blank":
-            self.img = pygame.image.load(imagePath)
-            self.posx, self.posy = posx, posy
-            self.colour = colour.lower()
-            self.value = value
-            self.name = name.lower()
+        self.img = pygame.image.load(imagePath)
+        self.posx, self.posy = posx, posy
+        self.colour = colour.lower()
+        self.value = value
+        self.name = name.lower()
 
-            self.arrayPosx, self.arrayPosy = self.findArray()
+        self.arrayPosx, self.arrayPosy = self.findArray()
 
-        else:
-            self.name = name.lower()
-            self.posx, self.posy = posx, posy
-            self.value = value
 
 
     def check(self):
