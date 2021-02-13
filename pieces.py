@@ -12,9 +12,10 @@ class pieces(object):
         self.arrayPosx, self.arrayPosy = self.findArray()
 
 
-
-    def check(self):
-        pass
     
     def findArray(self):
         return int((self.posx-100)/100), int((self.posy-100)/100)
+
+    def changeColour(self, imagePath):
+        self.img = pygame.image.load(imagePath).convert()
+        self.img.set_alpha(128)

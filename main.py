@@ -57,6 +57,7 @@ for i in range(8):
         else: boardBg[i].append(bs.board(os.path.join("imgs","darkSquare.png"), 100+j*100, 100+i*100, i+j))
 
 wood = pygame.image.load(os.path.join("imgs","wood.jpg"))
+selectedPath = os.path.join("imgs", "selected.png")
 
 
 clock = pygame.time.Clock()
@@ -75,8 +76,13 @@ while running:
                     pressx = mousePressedPos[0]; pressy = mousePressedPos[1]
                     pressx = (pressx - 100) / 100; pressy = (pressy - 100) / 100
                     print(str(pressx)[0], str(pressy)[0])
+                    clicked = True
             if clicked:
-                
+                for i in range(len(boardPc)):
+                    for j in range(len(boardPc[i])):
+                        if boardPc[i][j].name == "blank":
+                            boardPc[i][j].changeColour(selectedPath)
+
 
     display.blit(wood, (0,0)); display.blit(wood, (894,0)); display.blit(wood, (0,894)); display.blit(wood, (894,894))      # Creates Background
 

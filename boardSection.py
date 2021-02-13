@@ -16,3 +16,4 @@ class board(object):
     def findArray(self):
         return int((self.posx-100)/100), int((self.posy-100)/100)
 
+    
