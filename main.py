@@ -45,8 +45,8 @@ while running:
             display.blit(boardBg[i][j].colour, (boardBg[i][j].posx, boardBg[i][j].posy))
 
 
-    display.blit(rook[0],(100,50))
-    display.blit(rook[1],(100,100))
+    display.blit(rook[0],(100,100))
+    display.blit(rook[1],(100,800))
 
     pygame.display.update()
     clock.tick(60)
