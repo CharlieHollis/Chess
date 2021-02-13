@@ -37,21 +37,15 @@ while running:
             # print(pygame.mouse.get_pos())
             pass
 
-    display.blit(wood, (0,0))
-    display.blit(wood, (894,0))
+    display.blit(wood, (0,0)); display.blit(wood, (894,0))      # Creates Background
 
-    # for i in range(8):
-    #     for j in range(8):
-    #         if ((i+1)+(j+1)) % 2 == 0:
-    #             pygame.draw.rect(display, white, (100+i*100,46+j*100,100,100))
-    #         else: pygame.draw.rect(display, darkSquare, (100+i*100,46+j*100,100,100))
-
-    for i in range(len(board)):
+    for i in range(len(board)):             # Creates Board
         for j in range(len(board[i])):
             pygame.draw.rect(display, board[i][j].colour, (board[i][j].posx,board[i][j].posy,board[i][j].sizex,board[i][j].sizey))
 
-    # display.blit(rook[0],(100,46))
-    # display.blit(rook[1],(100,746))
+
+    display.blit(rook[0],(100,46))
+    display.blit(rook[1],(100,746))
 
     pygame.display.update()
     clock.tick(60)
