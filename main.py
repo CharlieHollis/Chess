@@ -90,11 +90,12 @@ while running:
         for j in range(len(boardBg[i])):
             display.blit(boardBg[i][j].colour, (boardBg[i][j].posx, boardBg[i][j].posy))
 
-    for i in range(len(boardPc)):
+    for i in range(len(boardPc)):             # Creates pieces on the board
         for j in range(len(boardPc[i])):
             display.blit(boardPc[i][j].img, (boardPc[i][j].posx, boardPc[i][j].posy))
 
-
+    # TODO:: Check where each piece can move, Display where each piece can move, Only display when a piece is pressed
+    # TODO:: Check if someone has won the game yet
 
     pygame.display.update()
     clock.tick(60)
