@@ -80,7 +80,7 @@ while running:
             mousePressedPos = pygame.mouse.get_pos()
             if mousePressedPos[0] > 99 and mousePressedPos[0] < 901 and not clicked:
                 if  mousePressedPos[1] > 99 and mousePressedPos[1] < 901:
-                    pressx = mousePressedPos[0]; pressy = mousePressedPos[1]
+                pressx = mousePressedPos[0]; pressy = mousePressedPos[1]
                     posx = (pressx - 100) / 100; posy = (pressy - 100) / 100
                     if finding:
                         if boardPc[int(posy)][int(posx)].name != "blank":
@@ -89,9 +89,12 @@ while running:
                                 for j in range(len(boardPc[i])):
                                     if boardPc[i][j].name == "blank":
                                         boardPc[i][j].setAlpha(selectedPath)
+                            findingPos = (posx,posy)
+                            finding = False
 
                     elif not finding:
-                        pass
+                        if boardPc[int(posy)][int(posx)].name == "blank":
+                            boardPc[int(posy)][int(posx)].returnAlpha()
 
                     
 
