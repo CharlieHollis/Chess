@@ -16,56 +16,56 @@ selected = (186,202,43)
 boardBg = []
 boardPc = []
 
-def checkSquare(posx, posy):
+def checkSquare(posx, posy):                                # Checks if the piece clicked on is a blank piece or not
     if boardPc[int(posy)][int(posx)].name != "blank":
         return True
     else: return False
 
-for i in range(8):
+for i in range(8):                      # Creates the board pieces object array
     boardPc.append([])
     for j in range(8):
         if i == 0 :
             if j == 0 or j == 7:
-                boardPc[i].append(pc.pieces(os.path.join("imgs","BlackRook.png"), 100+j*100, 100+i*100, "BlackRook", i+j, "BlackRook"))
+                boardPc[i].append(pc.pieces(os.path.join("imgs","BlackRook.png"), 100+j*100, 100+i*100, "BlackRook", 1, "BlackRook"))
             elif j == 1 or j == 6:
-                boardPc[i].append(pc.pieces(os.path.join("imgs","BlackKnight.png"), 100+j*100, 100+i*100, "BlackKnight", i+j, "BlackKnight"))
+                boardPc[i].append(pc.pieces(os.path.join("imgs","BlackKnight.png"), 100+j*100, 100+i*100, "BlackKnight", 1, "BlackKnight"))
             elif j == 2 or j == 5:
-                boardPc[i].append(pc.pieces(os.path.join("imgs","BlackBishop.png"), 100+j*100, 100+i*100, "BlackBishop", i+j, "BlackBishop"))
+                boardPc[i].append(pc.pieces(os.path.join("imgs","BlackBishop.png"), 100+j*100, 100+i*100, "BlackBishop", 1, "BlackBishop"))
             elif j == 3:
-                boardPc[i].append(pc.pieces(os.path.join("imgs","BlackQueen.png"), 100+j*100, 100+i*100, "BlackQueen", i+j, "BlackQueen"))
+                boardPc[i].append(pc.pieces(os.path.join("imgs","BlackQueen.png"), 100+j*100, 100+i*100, "BlackQueen", 1, "BlackQueen"))
             elif j == 4:
-                boardPc[i].append(pc.pieces(os.path.join("imgs","BlackKing.png"), 100+j*100, 100+i*100, "BlackKing", i+j, "BlackKing"))
+                boardPc[i].append(pc.pieces(os.path.join("imgs","BlackKing.png"), 100+j*100, 100+i*100, "BlackKing", 1, "BlackKing"))
         elif i == 1:
-            boardPc[i].append(pc.pieces(os.path.join("imgs","BlackPawn.png"), 100+j*100, 100+i*100, "BlackPawn", i+j, "BlackPawn"))
+            boardPc[i].append(pc.pieces(os.path.join("imgs","BlackPawn.png"), 100+j*100, 100+i*100, "BlackPawn", 1, "BlackPawn"))
         
         elif i == 7 :
             if j == 0 or j == 7:
-                boardPc[i].append(pc.pieces(os.path.join("imgs","WhiteRook.png"), 100+j*100, 100+i*100, "WhiteRook", i+j, "WhiteRook"))
+                boardPc[i].append(pc.pieces(os.path.join("imgs","WhiteRook.png"), 100+j*100, 100+i*100, "WhiteRook", 0, "WhiteRook"))
             elif j == 1 or j == 6:
-                boardPc[i].append(pc.pieces(os.path.join("imgs","WhiteKnight.png"), 100+j*100, 100+i*100, "WhiteKnight", i+j, "WhiteKnight"))
+                boardPc[i].append(pc.pieces(os.path.join("imgs","WhiteKnight.png"), 100+j*100, 100+i*100, "WhiteKnight", 0, "WhiteKnight"))
             elif j == 2 or j == 5:
-                boardPc[i].append(pc.pieces(os.path.join("imgs","WhiteBishop.png"), 100+j*100, 100+i*100, "WhiteBishop", i+j, "WhiteBishop"))
+                boardPc[i].append(pc.pieces(os.path.join("imgs","WhiteBishop.png"), 100+j*100, 100+i*100, "WhiteBishop", 0, "WhiteBishop"))
             elif j == 3:
-                boardPc[i].append(pc.pieces(os.path.join("imgs","WhiteQueen.png"), 100+j*100, 100+i*100, "BlacWhiteQueenkQueen", i+j, "WhiteQueen"))
+                boardPc[i].append(pc.pieces(os.path.join("imgs","WhiteQueen.png"), 100+j*100, 100+i*100, "BlacWhiteQueenkQueen", 0, "WhiteQueen"))
             elif j == 4:
-                boardPc[i].append(pc.pieces(os.path.join("imgs","WhiteKing.png"), 100+j*100, 100+i*100, "WhiteKing", i+j, "WhiteKing"))
+                boardPc[i].append(pc.pieces(os.path.join("imgs","WhiteKing.png"), 100+j*100, 100+i*100, "WhiteKing", 0, "WhiteKing"))
         elif i == 6:
-            boardPc[i].append(pc.pieces(os.path.join("imgs","WhitePawn.png"), 100+j*100, 100+i*100, "WhitePawn", i+j, "WhitePawn"))
+            boardPc[i].append(pc.pieces(os.path.join("imgs","WhitePawn.png"), 100+j*100, 100+i*100, "WhitePawn", 0, "WhitePawn"))
         else:
-             boardPc[i].append(pc.pieces(os.path.join("imgs","blank.png"), 100+j*100, 100+i*100, "blank", i+j, "blank"))           
+             boardPc[i].append(pc.pieces(os.path.join("imgs","blank.png"), 100+j*100, 100+i*100, "blank", -1, "blank"))           
 
-for i in range(8):
+for i in range(8):                      # Creates the board sections object array
     boardBg.append([])
     for j in range(8):
         if ((i+1)+(j+1)) % 2 == 0:
             boardBg[i].append(bs.board(os.path.join("imgs","lightSquare.png"), 100+j*100, 100+i*100, i+j))
         else: boardBg[i].append(bs.board(os.path.join("imgs","darkSquare.png"), 100+j*100, 100+i*100, i+j))
 
-wood = pygame.image.load(os.path.join("imgs","wood.jpg"))
-selectedPath = os.path.join("imgs", "selected.png")
+wood = pygame.image.load(os.path.join("imgs","wood.jpg"))           # Bg img
+selectedPath = os.path.join("imgs", "selected.png")                 # Selected img path
 
 
-clock = pygame.time.Clock()
+clock = pygame.time.Clock()                             # Creates a clock variable to lock the fps
 
 clicked = False
 finding = True
@@ -73,8 +73,8 @@ turn = 0
 findingPos = (0,0)
 running = True
 
-while running:
-    for event in pygame.event.get():
+while running:                                              # Main Game Loop
+    for event in pygame.event.get():                        # Loop that checks for events
         if event.type == pygame.QUIT:
             running = False
         if event.type == pygame.MOUSEBUTTONDOWN:
@@ -121,11 +121,7 @@ while running:
         for j in range(len(boardPc[i])):
             display.blit(boardPc[i][j].img, (boardPc[i][j].posx, boardPc[i][j].posy))
 
-    # TODO:: Check where each piece can move, Display where each piece can move, Only display when a piece is pressed
-    # TODO:: Check if someone has won the game yet
+    pygame.display.update()                   # Updates the creen (new frame)
+    clock.tick(60)                            # Sets the fps to a locked 60 (change to 30 if you have integrated graphics)
 
-    pygame.display.update()
-    clock.tick(60)
-
-
-pygame.quit()
+pygame.quit()                                 # Closes the window and ends the program

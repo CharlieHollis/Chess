@@ -12,6 +12,8 @@ class pieces(object):
 
         self.arrayPosx, self.arrayPosy = self.findArray()
 
+        self.moveablePlaces
+
 
     
     def findArray(self):
@@ -24,3 +26,8 @@ class pieces(object):
     def returnAlpha(self, imgPath):
         self.img = pygame.image.load(imgPath)
 
+    def moveablePlaces(self):
+        if self.name == "blank":
+            return []
+        
+        if self.value = 0
