@@ -96,8 +96,17 @@ while running:
                     elif not finding:
                         if boardPc[int(posy)][int(posx)].name == "blank":
                             boardPc[int(posy)][int(posx)].returnAlpha(boardPc[findingPos[1]][findingPos[0]].imagePath)
+                            boardPc[int(posy)][int(posx)].name = boardPc[findingPos[1]][findingPos[0]].name 
+                            boardPc[int(posy)][int(posx)].posx = int(posx); boardPc[int(posy)][int(posx)].posy = int(posy)
+
                             boardPc[findingPos[1]][findingPos[0]].returnAlpha(os.path.join("imgs", "blank.png"))
+                            boardPc[findingPos[1]][findingPos[0]].name = "blank" 
+                            boardPc[findingPos[1]][findingPos[0]].posx = int(findingPos[0]); boardPc[findingPos[1]][findingPos[0]].posy = int(findingPos[1])
                             finding = True
+                            for i in range(len(boardPc)):
+                                for j in range(len(boardPc[i])):
+                                    if boardPc[i][j].name == "blank":
+                                        boardPc[i][j].returnAlpha(os.path.join("imgs","blank.png"))
 
                     
 
