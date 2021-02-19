@@ -3,6 +3,7 @@ import pygame
 class pieces(object):
 
     def __init__(self, imagePath, posx, posy, colour, value, name):
+        self.imagePath = imagePath
         self.img = pygame.image.load(imagePath)
         self.posx, self.posy = posx, posy
         self.colour = colour.lower()
