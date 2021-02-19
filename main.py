@@ -68,6 +68,8 @@ selectedPath = os.path.join("imgs", "selected.png")
 clock = pygame.time.Clock()
 
 clicked = False
+finding = True
+turn = 0
 running = True
 
 while running:
@@ -79,9 +81,20 @@ while running:
             if mousePressedPos[0] > 99 and mousePressedPos[0] < 901 and not clicked:
                 if  mousePressedPos[1] > 99 and mousePressedPos[1] < 901:
                     pressx = mousePressedPos[0]; pressy = mousePressedPos[1]
-                    pressx = (pressx - 100) / 100; pressy = (pressy - 100) / 100
-                    print(str(pressx)[0], str(pressy)[0])
-                    print(checkSquare(pressx, pressy))
+                    posx = (pressx - 100) / 100; posy = (pressy - 100) / 100
+                    if finding:
+                        if boardPc[int(posy)][int(posx)].name != "blank":
+                            findingName = boardPc[int(posy)][int(posx)].name
+                            for i in range(len(boardPc)):
+                                for j in range(len(boardPc[i])):
+                                    if boardPc[i][j].name == "blank":
+                                        boardPc[i][j].setAlpha(selectedPath)
+
+                    elif not finding:
+                        pass
+
+                    
+
             #         clicked = True
             # if clicked:
             #     for i in range(len(boardPc)):
