@@ -95,15 +95,20 @@ while running:                                              # Main Game Loop
 
                     elif not finding:
                         if boardPc[int(posy)][int(posx)].name == "blank":
-                            boardPc[int(posy)][int(posx)].returnAlpha(boardPc[findingPos[1]][findingPos[0]].imagePath)
+
+                            # Moving Piece to Blank 
+                            boardPc[int(posy)][int(posx)].returnAlpha(os.path.join("imgs","{}.png".format(boardPc[findingPos[1]][findingPos[0]].name)))
                             boardPc[int(posy)][int(posx)].name = boardPc[findingPos[1]][findingPos[0]].name 
                             boardPc[int(posy)][int(posx)].posx = (int(posx) * 100) + 100
                             boardPc[int(posy)][int(posx)].posy = (int(posy) * 100) + 100
+                            print(boardPc[int(posy)][int(posx)].name)
 
+                            # Moving Blank to Piece
                             boardPc[findingPos[1]][findingPos[0]].returnAlpha(os.path.join("imgs", "blank.png"))
                             boardPc[findingPos[1]][findingPos[0]].name = "blank" 
                             boardPc[findingPos[1]][findingPos[0]].posx = (int(findingPos[0]) * 100) + 100
                             boardPc[findingPos[1]][findingPos[0]].posy = (int(findingPos[1]) * 100) + 100
+                            print(boardPc[findingPos[1]][findingPos[0]].name)
                             finding = True
                             for i in range(len(boardPc)):
                                 for j in range(len(boardPc[i])):

@@ -30,5 +30,7 @@ class pieces(object):
         if self.name == "blank":
             return []
         
+        # TODO:: Write the moveable places algorithm
+
         if self.value == 0:
             pass
