@@ -88,7 +88,7 @@ while running:                                              # Main Game Loop
                             findingName = boardPc[int(posy)][int(posx)].name
                             print(findingName)
                             MoveablePlaces = boardPc[int(posy)][int(posx)].moveablePlaces()
-                            for i in range(len(MoveablePlaces)):
++                            for i in range(len(MoveablePlaces)):
                                 movPosx = MoveablePlaces[i][0]
                                 movPosy = MoveablePlaces[i][1]
                                 if movPosx >= 8 or movPosy >= 8:
