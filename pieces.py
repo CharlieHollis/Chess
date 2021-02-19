@@ -19,3 +19,4 @@ class pieces(object):
     def changeColour(self, imagePath):
         self.img = pygame.image.load(imagePath).convert()
         self.img.set_alpha(128)
+        
