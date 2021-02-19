@@ -17,10 +17,10 @@ class pieces(object):
     def findArray(self):
         return int((self.posx-100)/100), int((self.posy-100)/100)
 
-    def setAlpha(self, imagePath):
-        self.img = pygame.image.load(imagePath).convert()
+    def setAlpha(self, imgPath):
+        self.img = pygame.image.load(imgPath).convert()
         self.img.set_alpha(81)
 
-    def returnAlpha(self, imagePath):
-        self.img = pygame.image.load(imagePath).convert()
+    def returnAlpha(self, imgPath):
+        self.img = pygame.image.load(imgPath).convert()
         self.img.set_alpha(255)

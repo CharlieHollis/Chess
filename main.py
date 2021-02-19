@@ -90,13 +90,13 @@ while running:
                                 for j in range(len(boardPc[i])):
                                     if boardPc[i][j].name == "blank":
                                         boardPc[i][j].setAlpha(selectedPath)
-                            findingPos = (posx,posy)
+                            findingPos = (int(posx),int(posy))
                             finding = False
 
                     elif not finding:
                         if boardPc[int(posy)][int(posx)].name == "blank":
-                            boardPc[int(posy)][int(posx)].returnAlpha(boardPc[int(findingPos[1])][int(findingPos[0])])
-                            boardPc[int(findingPos[1])][int(findingPos[0])].returnAlpha(os.path.join("imgs","blank.png"))
+                            boardPc[int(posy)][int(posx)].returnAlpha(boardPc[findingPos[1]][findingPos[0]].imagePath)
+                            boardPc[findingPos[1]][findingPos[0]].returnAlpha(os.path.join("imgs", "blank.png"))
                             finding = True
 
                     
