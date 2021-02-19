@@ -30,4 +30,5 @@ class pieces(object):
         if self.name == "blank":
             return []
         
-        if self.value = 0
+        if self.value = 0:
+            pass
