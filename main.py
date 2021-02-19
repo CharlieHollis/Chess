@@ -86,17 +86,16 @@ while running:                                              # Main Game Loop
                     if finding:
                         if boardPc[int(posy)][int(posx)].name != "blank":
                             findingName = boardPc[int(posy)][int(posx)].name
+                            print(findingName)
                             MoveablePlaces = boardPc[int(posy)][int(posx)].moveablePlaces()
                             for i in range(len(MoveablePlaces)):
                                 movPosx = MoveablePlaces[i][0]
                                 movPosy = MoveablePlaces[i][1]
-                                # print(movPosx, movPosy)
-                                if movPosx >= 9 or movPosy >= 9:
+                                if movPosx >= 8 or movPosy >= 8:
                                     pass
                                 elif movPosx <= -1 or movPosy <= -1:
                                     pass
                                 else:
-                                    # TODO:: Check why movPosx & movPosy are saying 4 6
                                     if boardPc[movPosy][movPosx].name == "blank":
                                         
                                         boardPc[movPosy][movPosx].setAlpha(selectedPath)
