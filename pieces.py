@@ -33,4 +33,16 @@ class pieces(object):
         # TODO:: Write the moveable places algorithm
 
         if self.value == 0:
-            pass
+            if self.name == "whitepawn":
+                return [(int((self.posx - 100) / 100), int((self.posy - 200) / 100)),
+                        (int((self.posx - 100) / 100), int((self.posy - 300) / 100))]
+
+            if self.name == "whiteknight":
+                return [(int((self.posx - 200) / 100), int((self.posy - 300) / 100)),
+                        (int((self.posx + 200) / 100), int((self.posy - 400) / 100)),
+                        (int((self.posx + 300) / 100), int((self.posy - 200) / 100)),
+                        (int((self.posx + 300) / 100), int((self.posy + 200) / 100)),
+                        (int((self.posx + 200) / 100), int((self.posy + 300) / 100)),
+                        (int((self.posx - 200) / 100), int((self.posy + 300) / 100)),
+                        (int((self.posx - 300) / 100), int((self.posy + 200) / 100)),
+                        (int((self.posx - 300) / 100), int((self.posy - 200) / 100))]
