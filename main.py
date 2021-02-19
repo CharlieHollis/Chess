@@ -82,9 +82,7 @@ while running:
             if mousePressedPos[0] > 99 and mousePressedPos[0] < 901 and not clicked:
                 if  mousePressedPos[1] > 99 and mousePressedPos[1] < 901:
                     pressx = mousePressedPos[0]; pressy = mousePressedPos[1]
-                    print(pressx)
                     posx = (pressx - 100) / 100; posy = (pressy - 100) / 100
-                    print(posx)
                     if finding:
                         if boardPc[int(posy)][int(posx)].name != "blank":
                             findingName = boardPc[int(posy)][int(posx)].name
@@ -93,12 +91,10 @@ while running:
                                     if boardPc[i][j].name == "blank":
                                         boardPc[i][j].setAlpha(selectedPath)
                             findingPos = (int(posx),int(posy))
-                            print(findingPos)
                             finding = False
 
                     elif not finding:
                         if boardPc[int(posy)][int(posx)].name == "blank":
-                            print(findingPos)
                             boardPc[int(posy)][int(posx)].returnAlpha(boardPc[findingPos[1]][findingPos[0]].imagePath)
                             boardPc[int(posy)][int(posx)].name = boardPc[findingPos[1]][findingPos[0]].name 
                             boardPc[int(posy)][int(posx)].posx = (int(posx) * 100) + 100
@@ -113,15 +109,6 @@ while running:
                                 for j in range(len(boardPc[i])):
                                     if boardPc[i][j].name == "blank":
                                         boardPc[i][j].returnAlpha(os.path.join("imgs","blank.png"))
-
-                    
-
-            #         clicked = True
-            # if clicked:
-            #     for i in range(len(boardPc)):
-            #         for j in range(len(boardPc[i])):
-            #             if boardPc[i][j].name == "blank":
-            #                 boardPc[i][j].setAlpha(selectedPath)
 
 
     display.blit(wood, (0,0)); display.blit(wood, (894,0)); display.blit(wood, (0,894)); display.blit(wood, (894,894))      # Creates Background
@@ -142,5 +129,3 @@ while running:
 
 
 pygame.quit()
-
-
