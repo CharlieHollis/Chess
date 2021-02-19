@@ -70,6 +70,7 @@ clock = pygame.time.Clock()
 clicked = False
 finding = True
 turn = 0
+findingPos = (0,0)
 running = True
 
 while running:
@@ -80,7 +81,7 @@ while running:
             mousePressedPos = pygame.mouse.get_pos()
             if mousePressedPos[0] > 99 and mousePressedPos[0] < 901 and not clicked:
                 if  mousePressedPos[1] > 99 and mousePressedPos[1] < 901:
-                pressx = mousePressedPos[0]; pressy = mousePressedPos[1]
+                    pressx = mousePressedPos[0]; pressy = mousePressedPos[1]
                     posx = (pressx - 100) / 100; posy = (pressy - 100) / 100
                     if finding:
                         if boardPc[int(posy)][int(posx)].name != "blank":
@@ -94,7 +95,9 @@ while running:
 
                     elif not finding:
                         if boardPc[int(posy)][int(posx)].name == "blank":
-                            boardPc[int(posy)][int(posx)].returnAlpha()
+                            boardPc[int(posy)][int(posx)].returnAlpha(boardPc[int(findingPos[1])][int(findingPos[0])])
+                            boardPc[int(findingPos[1])][int(findingPos[0])].returnAlpha(os.path.join("imgs","blank.png"))
+                            finding = True
 
                     
 
