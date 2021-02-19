@@ -81,7 +81,7 @@ while running:
                 for i in range(len(boardPc)):
                     for j in range(len(boardPc[i])):
                         if boardPc[i][j].name == "blank":
-                            boardPc[i][j].changeColour(selectedPath)
+                            boardPc[i][j].setAlpha(selectedPath)
 
 
     display.blit(wood, (0,0)); display.blit(wood, (894,0)); display.blit(wood, (0,894)); display.blit(wood, (894,894))      # Creates Background
