@@ -18,4 +18,4 @@ class pieces(object):
 
     def setAlpha(self, imagePath):
         self.img = pygame.image.load(imagePath).convert()
-        self.img.set_alpha(64)
+        self.img.set_alpha(80)
