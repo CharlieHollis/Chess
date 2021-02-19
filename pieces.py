@@ -16,7 +16,6 @@ class pieces(object):
     def findArray(self):
         return int((self.posx-100)/100), int((self.posy-100)/100)
 
-    def changeColour(self, imagePath):
+    def setAlpha(self, imagePath):
         self.img = pygame.image.load(imagePath).convert()
-        self.img.set_alpha(128)
-        
+        self.img.set_alpha(64)
