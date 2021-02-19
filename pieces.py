@@ -19,3 +19,7 @@ class pieces(object):
     def setAlpha(self, imagePath):
         self.img = pygame.image.load(imagePath).convert()
         self.img.set_alpha(81)
+
+    def returnAlpha(self, imagePath):
+        self.img = pygame.image.load(imagePath).convert()
+        self.img.set_alpha(255)
