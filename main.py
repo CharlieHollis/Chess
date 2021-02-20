@@ -77,6 +77,17 @@ while running:                                              # Main Game Loop
     for event in pygame.event.get():                        # Loop that checks for events
         if event.type == pygame.QUIT:
             running = False
+
+
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE and not finding:
+                for i in range(len(boardPc)):
+                    for j in range(len(boardPc[i])):
+                        if boardPc[i][j].name == "blank":
+                            boardPc[i][j].returnAlpha(os.path.join("imgs","blank.png"))
+                finding = True                
+
+
         if event.type == pygame.MOUSEBUTTONDOWN:
             mousePressedPos = pygame.mouse.get_pos()
             if mousePressedPos[0] > 99 and mousePressedPos[0] < 901 and not clicked:
@@ -86,9 +97,10 @@ while running:                                              # Main Game Loop
                     if finding:
                         if boardPc[int(posy)][int(posx)].name != "blank":
                             findingName = boardPc[int(posy)][int(posx)].name
-                            print(findingName)
                             MoveablePlaces = boardPc[int(posy)][int(posx)].moveablePlaces()
-+                            for i in range(len(MoveablePlaces)):
+                            print(findingName)
+                            print(MoveablePlaces)
+                            for i in range(len(MoveablePlaces)):
                                 movPosx = MoveablePlaces[i][0]
                                 movPosy = MoveablePlaces[i][1]
                                 if movPosx >= 8 or movPosy >= 8:
@@ -97,29 +109,26 @@ while running:                                              # Main Game Loop
                                     pass
                                 else:
                                     if boardPc[movPosy][movPosx].name == "blank":
-                                        
-                                        boardPc[movPosy][movPosx].setAlpha(selectedPath)
-                                    
-                                    
+                                        boardPc[movPosy][movPosx].setAlpha(selectedPath)        
                             findingPos = (int(posx),int(posy))
                             finding = False
 
                     elif not finding:
-                        if boardPc[int(posy)][int(posx)].name == "blank":
-
+                        if boardPc[int(posy)][int(posx)].name == "blank" and (int(posx),int(posy)) in MoveablePlaces:
                             # Moving Piece to Blank 
                             boardPc[int(posy)][int(posx)].returnAlpha(os.path.join("imgs","{}.png".format(boardPc[findingPos[1]][findingPos[0]].name)))
                             boardPc[int(posy)][int(posx)].name = boardPc[findingPos[1]][findingPos[0]].name 
                             boardPc[int(posy)][int(posx)].posx = (int(posx) * 100) + 100
                             boardPc[int(posy)][int(posx)].posy = (int(posy) * 100) + 100
-                            print(boardPc[int(posy)][int(posx)].name)
+                            boardPc[int(posy)][int(posx)].value = boardPc[findingPos[1]][findingPos[0]].value
+                            print(int(posx), int(posy))
 
                             # Moving Blank to Piece
                             boardPc[findingPos[1]][findingPos[0]].returnAlpha(os.path.join("imgs", "blank.png"))
                             boardPc[findingPos[1]][findingPos[0]].name = "blank" 
                             boardPc[findingPos[1]][findingPos[0]].posx = (int(findingPos[0]) * 100) + 100
                             boardPc[findingPos[1]][findingPos[0]].posy = (int(findingPos[1]) * 100) + 100
-                            print(boardPc[findingPos[1]][findingPos[0]].name)
+                            boardPc[findingPos[1]][findingPos[0]].value = -1
                             finding = True
                             for i in range(len(boardPc)):
                                 for j in range(len(boardPc[i])):

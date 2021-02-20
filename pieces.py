@@ -41,14 +41,13 @@ class pieces(object):
                 return [(int((self.posx - 200) / 100), int((self.posy - 300) / 100)),
                         (int((self.posx + 0) / 100), int((self.posy - 300) / 100)),
                         (int((self.posx + 100) / 100), int((self.posy - 200) / 100)),
-                        (int((self.posx + 100) / 100), int((self.posy + 200) / 100)),
-                        (int((self.posx + 0) / 100), int((self.posy + 300) / 100)),
-                        (int((self.posx - 200) / 100), int((self.posy + 300) / 100)),
-                        (int((self.posx - 300) / 100), int((self.posy + 200) / 100)),
+                        (int((self.posx + 100) / 100), int((self.posy + 0  ) / 100)),
+                        (int((self.posx + 0  ) / 100), int((self.posy + 100) / 100)),
+                        (int((self.posx - 200) / 100), int((self.posy + 100) / 100)),
+                        (int((self.posx - 300) / 100), int((self.posy + 0  ) / 100)),
                         (int((self.posx - 300) / 100), int((self.posy - 200) / 100))]
-                
-            
-            if self.name == "whitecastle":
+                          
+            if self.name == "whiterook":
                 return [(int((self.posx - 200) / 100), int(self.posy / 100)),
                         (int((self.posx - 300) / 100), int(self.posy / 100)),
                         (int((self.posx - 400) / 100), int(self.posy / 100)),
