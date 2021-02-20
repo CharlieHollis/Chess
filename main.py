@@ -75,11 +75,11 @@ running = True
 
 while running:                                              # Main Game Loop
     for event in pygame.event.get():                        # Loop that checks for events
-        if event.type == pygame.QUIT:
+        if event.type == pygame.QUIT:                       # Checks if the quit button has been pressed
             running = False
 
 
-        if event.type == pygame.KEYDOWN:
+        if event.type == pygame.KEYDOWN:                    # Gets all key down events
             if event.key == pygame.K_ESCAPE and not finding:
                 for i in range(len(boardPc)):
                     for j in range(len(boardPc[i])):
@@ -88,7 +88,7 @@ while running:                                              # Main Game Loop
                 finding = True                
 
 
-        if event.type == pygame.MOUSEBUTTONDOWN:
+        if event.type == pygame.MOUSEBUTTONDOWN:            # Gets all mouse button down events
             mousePressedPos = pygame.mouse.get_pos()
             if mousePressedPos[0] > 99 and mousePressedPos[0] < 901 and not clicked:
                 if  mousePressedPos[1] > 99 and mousePressedPos[1] < 901:
