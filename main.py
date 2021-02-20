@@ -97,7 +97,7 @@ while running:                                              # Main Game Loop
                     if finding:
                         if boardPc[int(posy)][int(posx)].name != "blank":
                             findingName = boardPc[int(posy)][int(posx)].name
-                            MoveablePlaces = boardPc[int(posy)][int(posx)].moveablePlaces()
+                            MoveablePlaces = boardPc[int(posy)][int(posx)].moveablePlaces(boardPc)
                             for i in range(len(MoveablePlaces)):
                                 movPosx = MoveablePlaces[i][0]
                                 movPosy = MoveablePlaces[i][1]

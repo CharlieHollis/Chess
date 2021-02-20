@@ -26,17 +26,27 @@ class pieces(object):
     def returnAlpha(self, imgPath):
         self.img = pygame.image.load(imgPath)
 
-    def moveablePlaces(self):
+    def moveablePlaces(self, piecesArray):
         if self.name == "blank":
             return []
         
-        # TODO:: Write the moveable places algorithm
+        self.moveable = []
+        self.oppPos = 0
 
         if self.value == 0:
             if self.name == "whitepawn":
-                return [(int((self.posx - 100) / 100), int((self.posy - 200) / 100)),
-                        (int((self.posx - 100) / 100), int((self.posy - 300) / 100))]
-
+                self.possiblePlaces = [(int((self.posx - 100) / 100), int((self.posy - 200) / 100)),
+                                      (int((self.posx - 100) / 100), int((self.posy - 300) / 100))]
+                
+                for i in self.possiblePlaces:
+                    if piecesArray[i[1]][i[0]].value == 1:
+                        self.oppPos += 1
+                    if piecesArray[i[1]][i[0]].value == self.value and self.oppPos == 1:
+                        break
+                    else:
+                        self.moveable.append(i)
+                return self.moveable
+            
             if self.name == "whiteknight":
                 return [(int((self.posx - 200) / 100), int((self.posy - 300) / 100)),
                         (int((self.posx + 0) / 100), int((self.posy - 300) / 100)),
@@ -46,70 +56,96 @@ class pieces(object):
                         (int((self.posx - 200) / 100), int((self.posy + 100) / 100)),
                         (int((self.posx - 300) / 100), int((self.posy + 0  ) / 100)),
                         (int((self.posx - 300) / 100), int((self.posy - 200) / 100))]
-                          
+            
             if self.name == "whiterook":
-                return [(int((self.posx - 200) / 100), int((self.posy - 100) / 100)),
-                        (int((self.posx - 300) / 100), int((self.posy - 100) / 100)),
-                        (int((self.posx - 400) / 100), int((self.posy - 100) / 100)),
-                        (int((self.posx - 500) / 100), int((self.posy - 100) / 100)),
-                        (int((self.posx - 600) / 100), int((self.posy - 100) / 100)),
-                        (int((self.posx - 700) / 100), int((self.posy - 100) / 100)),
-                        (int((self.posx - 800) / 100), int((self.posy - 100) / 100)),
+                self.possiblePlaces = [[(int((self.posx - 200) / 100), int((self.posy - 100) / 100)),
+                                        (int((self.posx - 300) / 100), int((self.posy - 100) / 100)),
+                                        (int((self.posx - 400) / 100), int((self.posy - 100) / 100)),
+                                        (int((self.posx - 500) / 100), int((self.posy - 100) / 100)),
+                                        (int((self.posx - 600) / 100), int((self.posy - 100) / 100)),
+                                        (int((self.posx - 700) / 100), int((self.posy - 100) / 100)),
+                                        (int((self.posx - 800) / 100), int((self.posy - 100) / 100))],
 
-                        (int((self.posx + 0  ) / 100), int((self.posy - 100) / 100)),
-                        (int((self.posx + 100) / 100), int((self.posy - 100) / 100)),
-                        (int((self.posx + 200) / 100), int((self.posy - 100) / 100)),
-                        (int((self.posx + 300) / 100), int((self.posy - 100) / 100)),
-                        (int((self.posx + 400) / 100), int((self.posy - 100) / 100)),
-                        (int((self.posx + 500) / 100), int((self.posy - 100) / 100)),
-                        (int((self.posx + 600) / 100), int((self.posy - 100) / 100)),
+                                        [(int((self.posx + 0  ) / 100), int((self.posy - 100) / 100)),
+                                        (int((self.posx + 100) / 100), int((self.posy - 100) / 100)),
+                                        (int((self.posx + 200) / 100), int((self.posy - 100) / 100)),
+                                        (int((self.posx + 300) / 100), int((self.posy - 100) / 100)),
+                                        (int((self.posx + 400) / 100), int((self.posy - 100) / 100)),
+                                        (int((self.posx + 500) / 100), int((self.posy - 100) / 100)),
+                                        (int((self.posx + 600) / 100), int((self.posy - 100) / 100))],
+                                        
+                                        [(int((self.posx - 100) / 100), int((self.posy - 200) / 100)),
+                                        (int((self.posx - 100) / 100), int((self.posy - 300) / 100)),
+                                        (int((self.posx - 100) / 100), int((self.posy - 400) / 100)),
+                                        (int((self.posx - 100) / 100), int((self.posy - 500) / 100)),
+                                        (int((self.posx - 100) / 100), int((self.posy - 600) / 100)),
+                                        (int((self.posx - 100) / 100), int((self.posy - 700) / 100)),
+                                        (int((self.posx - 100) / 100), int((self.posy - 800) / 100))],
+                                        
+                                        [(int((self.posx - 100) / 100), int((self.posy + 0  ) / 100)),
+                                        (int((self.posx - 100) / 100), int((self.posy + 100) / 100)),
+                                        (int((self.posx - 100) / 100), int((self.posy + 200) / 100)),
+                                        (int((self.posx - 100) / 100), int((self.posy + 300) / 100)),
+                                        (int((self.posx - 100) / 100), int((self.posy + 400) / 100)),
+                                        (int((self.posx - 100) / 100), int((self.posy + 500) / 100)),
+                                        (int((self.posx - 100) / 100), int((self.posy + 600) / 100))]]
 
-                        (int((self.posx - 100) / 100), int((self.posy - 200) / 100)),
-                        (int((self.posx - 100) / 100), int((self.posy - 300) / 100)),
-                        (int((self.posx - 100) / 100), int((self.posy - 400) / 100)),
-                        (int((self.posx - 100) / 100), int((self.posy - 500) / 100)),
-                        (int((self.posx - 100) / 100), int((self.posy - 600) / 100)),
-                        (int((self.posx - 100) / 100), int((self.posy - 700) / 100)),
-                        (int((self.posx - 100) / 100), int((self.posy - 800) / 100)),
-
-                        (int((self.posx - 100) / 100), int((self.posy + 0  ) / 100)),
-                        (int((self.posx - 100) / 100), int((self.posy + 100) / 100)),
-                        (int((self.posx - 100) / 100), int((self.posy + 200) / 100)),
-                        (int((self.posx - 100) / 100), int((self.posy + 300) / 100)),
-                        (int((self.posx - 100) / 100), int((self.posy + 400) / 100)),
-                        (int((self.posx - 100) / 100), int((self.posy + 500) / 100)),
-                        (int((self.posx - 100) / 100), int((self.posy + 600) / 100))]
-
+                for i in range(len(self.possiblePlaces)):
+                    for j in self.possiblePlaces[i]:
+                        if j[0] >= 8 or j[1] >= 8:
+                            break
+                        elif j[0] <= -1 or j[1] <= -1:
+                            break
+                        if piecesArray[j[1]][j[0]].value == self.value:
+                            break
+                        else:
+                            self.moveable.append(j)
+                
+                return self.moveable
 
             if self.name == "whitebishop":
-                return [(int((self.posx - 200) / 100), int((self.posy - 200) / 100)),
-                        (int((self.posx - 300) / 100), int((self.posy - 300) / 100)),
-                        (int((self.posx - 400) / 100), int((self.posy - 400) / 100)),
-                        (int((self.posx - 500) / 100), int((self.posy - 500) / 100)),
-                        (int((self.posx - 600) / 100), int((self.posy - 600) / 100)),
-                        (int((self.posx - 700) / 100), int((self.posy - 700) / 100)),
-                        (int((self.posx - 800) / 100), int((self.posy - 800) / 100)),
-                        
-                        (int((self.posx + 0  ) / 100), int((self.posy - 200) / 100)),
-                        (int((self.posx + 100) / 100), int((self.posy - 300) / 100)),
-                        (int((self.posx + 200) / 100), int((self.posy - 400) / 100)),
-                        (int((self.posx + 300) / 100), int((self.posy - 500) / 100)),
-                        (int((self.posx + 400) / 100), int((self.posy - 600) / 100)),
-                        (int((self.posx + 500) / 100), int((self.posy - 700) / 100)),
-                        (int((self.posx + 600) / 100), int((self.posy - 800) / 100)),
-                        
-                        (int((self.posx + 0  ) / 100), int((self.posy + 0  ) / 100)),
-                        (int((self.posx + 100) / 100), int((self.posy + 100) / 100)),
-                        (int((self.posx + 200) / 100), int((self.posy + 200) / 100)),
-                        (int((self.posx + 300) / 100), int((self.posy + 300) / 100)),
-                        (int((self.posx + 400) / 100), int((self.posy + 400) / 100)),
-                        (int((self.posx + 500) / 100), int((self.posy + 500) / 100)),
-                        (int((self.posx + 600) / 100), int((self.posy + 600) / 100)),
-                        
-                        (int((self.posx - 200) / 100), int((self.posy + 0  ) / 100)),
-                        (int((self.posx - 300) / 100), int((self.posy + 100) / 100)),
-                        (int((self.posx - 400) / 100), int((self.posy + 200) / 100)),
-                        (int((self.posx - 500) / 100), int((self.posy + 300) / 100)),
-                        (int((self.posx - 600) / 100), int((self.posy + 400) / 100)),
-                        (int((self.posx - 700) / 100), int((self.posy + 500) / 100)),
-                        (int((self.posx - 800) / 100), int((self.posy + 600) / 100))]
+                self.possiblePlaces = [[(int((self.posx - 200) / 100), int((self.posy - 200) / 100)),
+                                        (int((self.posx - 300) / 100), int((self.posy - 300) / 100)),
+                                        (int((self.posx - 400) / 100), int((self.posy - 400) / 100)),
+                                        (int((self.posx - 500) / 100), int((self.posy - 500) / 100)),
+                                        (int((self.posx - 600) / 100), int((self.posy - 600) / 100)),
+                                        (int((self.posx - 700) / 100), int((self.posy - 700) / 100)),
+                                        (int((self.posx - 800) / 100), int((self.posy - 800) / 100))],
+
+                                        [(int((self.posx + 0  ) / 100), int((self.posy - 200) / 100)),
+                                        (int((self.posx + 100) / 100), int((self.posy - 300) / 100)),
+                                        (int((self.posx + 200) / 100), int((self.posy - 400) / 100)),
+                                        (int((self.posx + 300) / 100), int((self.posy - 500) / 100)),
+                                        (int((self.posx + 400) / 100), int((self.posy - 600) / 100)),
+                                        (int((self.posx + 500) / 100), int((self.posy - 700) / 100)),
+                                        (int((self.posx + 600) / 100), int((self.posy - 800) / 100))],
+                                        
+                                        [(int((self.posx + 0  ) / 100), int((self.posy + 0  ) / 100)),
+                                        (int((self.posx + 100) / 100), int((self.posy + 100) / 100)),
+                                        (int((self.posx + 200) / 100), int((self.posy + 200) / 100)),
+                                        (int((self.posx + 300) / 100), int((self.posy + 300) / 100)),
+                                        (int((self.posx + 400) / 100), int((self.posy + 400) / 100)),
+                                        (int((self.posx + 500) / 100), int((self.posy + 500) / 100)),
+                                        (int((self.posx + 600) / 100), int((self.posy + 600) / 100))],
+                                        
+                                        [(int((self.posx - 200) / 100), int((self.posy + 0  ) / 100)),
+                                        (int((self.posx - 300) / 100), int((self.posy + 100) / 100)),
+                                        (int((self.posx - 400) / 100), int((self.posy + 200) / 100)),
+                                        (int((self.posx - 500) / 100), int((self.posy + 300) / 100)),
+                                        (int((self.posx - 600) / 100), int((self.posy + 400) / 100)),
+                                        (int((self.posx - 700) / 100), int((self.posy + 500) / 100)),
+                                        (int((self.posx - 800) / 100), int((self.posy + 600) / 100))]]
+
+                for i in range(len(self.possiblePlaces)):
+                    for j in self.possiblePlaces[i]:
+                        if j[0] >= 8 or j[1] >= 8:
+                            break
+                        elif j[0] <= -1 or j[1] <= -1:
+                            break
+                        if piecesArray[j[1]][j[0]].value == self.value:
+                            break
+                        else:
+                            self.moveable.append(j)
+                
+                return self.moveable
+                            
