@@ -98,8 +98,6 @@ while running:                                              # Main Game Loop
                         if boardPc[int(posy)][int(posx)].name != "blank":
                             findingName = boardPc[int(posy)][int(posx)].name
                             MoveablePlaces = boardPc[int(posy)][int(posx)].moveablePlaces()
-                            print(findingName)
-                            print(MoveablePlaces)
                             for i in range(len(MoveablePlaces)):
                                 movPosx = MoveablePlaces[i][0]
                                 movPosy = MoveablePlaces[i][1]
@@ -114,14 +112,13 @@ while running:                                              # Main Game Loop
                             finding = False
 
                     elif not finding:
-                        if boardPc[int(posy)][int(posx)].name == "blank" and (int(posx),int(posy)) in MoveablePlaces:
+                        if boardPc[int(posy)][int(posx)].value != boardPc[findingPos[1]][findingPos[0]].value and (int(posx),int(posy)) in MoveablePlaces:
                             # Moving Piece to Blank 
                             boardPc[int(posy)][int(posx)].returnAlpha(os.path.join("imgs","{}.png".format(boardPc[findingPos[1]][findingPos[0]].name)))
                             boardPc[int(posy)][int(posx)].name = boardPc[findingPos[1]][findingPos[0]].name 
                             boardPc[int(posy)][int(posx)].posx = (int(posx) * 100) + 100
                             boardPc[int(posy)][int(posx)].posy = (int(posy) * 100) + 100
                             boardPc[int(posy)][int(posx)].value = boardPc[findingPos[1]][findingPos[0]].value
-                            print(int(posx), int(posy))
 
                             # Moving Blank to Piece
                             boardPc[findingPos[1]][findingPos[0]].returnAlpha(os.path.join("imgs", "blank.png"))
