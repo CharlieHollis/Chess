@@ -48,7 +48,7 @@ class pieces(object):
                         (int((self.posx - 300) / 100), int((self.posy - 200) / 100))]
                           
             if self.name == "whiterook":
-                return [(int((self.posx - 200) / 100), int(self.posy / 100)),
+                return [(int((self.posx - 200) / 100), int((self.posy) / 100)),
                         (int((self.posx - 300) / 100), int(self.posy / 100)),
                         (int((self.posx - 400) / 100), int(self.posy / 100)),
                         (int((self.posx - 500) / 100), int(self.posy / 100)),
@@ -77,33 +77,3 @@ class pieces(object):
                         (int(self.posx / 100), int((self.posy + 600) / 100)),
                         (int(self.posx / 100), int((self.posy + 700) / 100))]
 
-
-        if self.name == "blackcastle":
-                return [(int((self.posx - 200) / 100), int(self.posy / 100)),
-                        (int((self.posx - 300) / 100), int(self.posy / 100)),
-                        (int((self.posx - 400) / 100), int(self.posy / 100)),
-                        (int((self.posx - 500) / 100), int(self.posy / 100)),
-                        (int((self.posx - 600) / 100), int(self.posy / 100)),
-                        (int((self.posx - 700) / 100), int(self.posy / 100)),
-                        (int((self.posx - 800) / 100), int(self.posy / 100)),
-                        (int((self.posx + 0)   / 100), int(self.posy / 100)),
-                        (int((self.posx + 100) / 100), int(self.posy / 100)),
-                        (int((self.posx + 200) / 100), int(self.posy / 100)),
-                        (int((self.posx + 300) / 100), int(self.posy / 100)),
-                        (int((self.posx + 400) / 100), int(self.posy / 100)),
-                        (int((self.posx + 500) / 100), int(self.posy / 100)),
-                        (int((self.posx + 600) / 100), int(self.posy / 100)),
-                        (int(self.posx / 100), int((self.posy - 200) / 100)),
-                        (int(self.posx / 100), int((self.posy - 300) / 100)),
-                        (int(self.posx / 100), int((self.posy - 400) / 100)),
-                        (int(self.posx / 100), int((self.posy - 500) / 100)),
-                        (int(self.posx / 100), int((self.posy - 600) / 100)),
-                        (int(self.posx / 100), int((self.posy - 700) / 100)),
-                        (int(self.posx / 100), int((self.posy - 800) / 100)),
-                        (int(self.posx / 100), int((self.posy + 100) / 100)),
-                        (int(self.posx / 100), int((self.posy + 200) / 100)),
-                        (int(self.posx / 100), int((self.posy + 300) / 100)),
-                        (int(self.posx / 100), int((self.posy + 400) / 100)),
-                        (int(self.posx / 100), int((self.posy + 500) / 100)),
-                        (int(self.posx / 100), int((self.posy + 600) / 100)),
-                        (int(self.posx / 100), int((self.posy + 700) / 100))]
