@@ -46,6 +46,7 @@ class pieces(object):
                         (int((self.posx - 200) / 100), int((self.posy + 300) / 100)),
                         (int((self.posx - 300) / 100), int((self.posy + 200) / 100)),
                         (int((self.posx - 300) / 100), int((self.posy - 200) / 100))]
+                
             
             if self.name == "whitecastle":
                 return [(int((self.posx - 200) / 100), int(self.posy / 100)),
