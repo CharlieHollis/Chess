@@ -122,6 +122,9 @@ while running:                                              # Main Game Loop
                                     if boardPc[movPosy][movPosx].name == "blank":
                                         boardPc[movPosy][movPosx].setAlpha(selectedPath)  
                             for i in MoveablePlaces:
+
+                                # TODO: Add algorithm that checks if the list is out of range
+
                                 if boardPc[i[1]][i[0]].value == 1:
                                     circleImgArray[i[1]][i[0]].colour.set_alpha(128)
                                 
@@ -141,7 +144,7 @@ while running:                                              # Main Game Loop
                                 else:
                                     if boardPc[movPosy][movPosx].name == "blank":
                                         boardPc[movPosy][movPosx].setAlpha(selectedPath)  
-                            for i in MoveablePlaces:
+                            for i in MoveablePlaces: 
                                 if boardPc[i[1]][i[0]].value == 0:
                                     circleImgArray[i[1]][i[0]].colour.set_alpha(128)
                                 
