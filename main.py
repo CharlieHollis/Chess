@@ -122,10 +122,11 @@ while running:                                              # Main Game Loop
                                     if boardPc[movPosy][movPosx].name == "blank":
                                         boardPc[movPosy][movPosx].setAlpha(selectedPath)  
                             for i in MoveablePlaces:
-
-                                # TODO: Add algorithm that checks if the list is out of range
-
-                                if boardPc[i[1]][i[0]].value == 1:
+                                if i[0] >= 8 or i[1] >= 8:
+                                    pass
+                                elif i[0] <= -1 or i[1] <= -1:
+                                    pass
+                                elif boardPc[i[1]][i[0]].value == 1:
                                     circleImgArray[i[1]][i[0]].colour.set_alpha(128)
                                 
                             findingPos = (int(posx),int(posy))
@@ -145,7 +146,11 @@ while running:                                              # Main Game Loop
                                     if boardPc[movPosy][movPosx].name == "blank":
                                         boardPc[movPosy][movPosx].setAlpha(selectedPath)  
                             for i in MoveablePlaces: 
-                                if boardPc[i[1]][i[0]].value == 0:
+                                if i[0] >= 8 or i[1] >= 8:
+                                    pass
+                                elif i[0] <= -1 or i[1] <= -1:
+                                    pass
+                                elif boardPc[i[1]][i[0]].value == 0:
                                     circleImgArray[i[1]][i[0]].colour.set_alpha(128)
                                 
                             findingPos = (int(posx),int(posy))
