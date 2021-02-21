@@ -242,3 +242,22 @@ class pieces(object):
                     self.oppPos = 0
                 
                 return self.moveable
+            
+            if self.name == "whiteking":
+                self.possiblePlaces = [(int((self.posx - 200) / 100), int((self.posy - 200) / 100)),
+                                       (int((self.posx - 100) / 100), int((self.posy - 200) / 100)),
+                                       (int((self.posx - 0  ) / 100), int((self.posy - 200) / 100)),
+                                       (int((self.posx - 0  ) / 100), int((self.posy - 100) / 100)),
+                                       (int((self.posx - 0  ) / 100), int((self.posy - 0  ) / 100)),
+                                       (int((self.posx - 100) / 100), int((self.posy - 0  ) / 100)),
+                                       (int((self.posx - 200) / 100), int((self.posy - 0  ) / 100)),
+                                       (int((self.posx - 200) / 100), int((self.posy - 100) / 100))]
+
+                for i in self.possiblePlaces:
+                    if (i[0] >= 8 or i[1] >= 8) or (i[0] <= -1 or i[1] <= -1):
+                        pass
+                    elif piecesArray[i[1]][i[0]].value == self.value:
+                        pass
+                    else:
+                        self.moveable.append(i)
+                return self.moveable
