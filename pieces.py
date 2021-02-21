@@ -38,17 +38,36 @@ class pieces(object):
                 self.possiblePlaces = [(int((self.posx - 100) / 100), int((self.posy - 200) / 100)),
                                       (int((self.posx - 100) / 100), int((self.posy - 300) / 100))]
                 
+                self.pawntakes = [(int((self.posx - 200) / 100), int((self.posy - 200) / 100)),
+                                  (int((self.posx - 0  ) / 100), int((self.posy - 200) / 100))]
+
                 for i in self.possiblePlaces:
-                    
-                    if piecesArray[i[1]][i[0]].value == self.value or self.oppPos == 1:
+                    if i[1] <= -1 or int(piecesArray[i[1]][i[0]].value) == 1:
                         break
-                    elif int(piecesArray[i[1]][i[0]].value) == 1 and self.oppPos == 0:
-                        self.oppPos = 1
-                        self.moveable.append(i)
                     else:
                         self.moveable.append(i)
+                
+                
+                for i in self.pawntakes:
+                    if i[1] <= -1:
+                        pass
+                    elif i[0] >= 8 or i[0] <= 1:
+                        pass
+                    elif int(piecesArray[i[1]][i[0]].value) != 1:
+                        pass
+                    else:
+                        self.moveable.append(i)
+
+                print(self.moveable)
                 return self.moveable
             
+
+
+
+
+
+
+
             if self.name == "whiteknight":
                 return [(int((self.posx - 200) / 100), int((self.posy - 300) / 100)),
                         (int((self.posx + 0  ) / 100), int((self.posy - 300) / 100)),
@@ -261,3 +280,10 @@ class pieces(object):
                     else:
                         self.moveable.append(i)
                 return self.moveable
+
+
+
+
+
+
+        
