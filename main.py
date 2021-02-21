@@ -5,6 +5,7 @@ import boardSection as bs
 import pieces as pc
 
 pygame.init()
+font = pygame.font.Font("CascadiaCode_VTT.ttf", 75)
 
 height, width = 1000,1000
 display = pygame.display.set_mode((width,height))
@@ -109,28 +110,15 @@ while running:                                              # Main Game Loop
                                 else:
                                     if boardPc[movPosy][movPosx].name == "blank":
                                         boardPc[movPosy][movPosx].setAlpha(selectedPath)  
+                            for i in MoveablePlaces:
+                                if boardPc[i[1]][i[0]].value == 1:
+                                    
                                 
                             findingPos = (int(posx),int(posy))
                             finding = False
-                            turn += 1
 
-                        elif boardPc[int(posy)][int(posx)].name != "blank" and turn % 2 != 0 and boardPc[int(posy)][int(posx)].value == 1:
-                            findingName = boardPc[int(posy)][int(posx)].name
-                            MoveablePlaces = boardPc[int(posy)][int(posx)].moveablePlaces(boardPc)
-                            for i in range(len(MoveablePlaces)):
-                                movPosx = MoveablePlaces[i][0]
-                                movPosy = MoveablePlaces[i][1]
-                                if movPosx >= 8 or movPosy >= 8:
-                                    pass
-                                elif movPosx <= -1 or movPosy <= -1:
-                                    pass
-                                else:
-                                    if boardPc[movPosy][movPosx].name == "blank":
-                                        boardPc[movPosy][movPosx].setAlpha(selectedPath)  
-                                
-                            findingPos = (int(posx),int(posy))
-                            finding = False
-                            turn += 1
+                        
+                        
 
                     elif not finding:
                         if boardPc[int(posy)][int(posx)].value != boardPc[findingPos[1]][findingPos[0]].value and (int(posx),int(posy)) in MoveablePlaces:
@@ -152,6 +140,12 @@ while running:                                              # Main Game Loop
                                 for j in range(len(boardPc[i])):
                                     if boardPc[i][j].name == "blank":
                                         boardPc[i][j].returnAlpha(os.path.join("imgs","blank.png"))
+                            turn += 1
+        
+    if turn % 2 == 0:
+        text = font.render("Turn: Player 1", True, white)
+    else: text = font.render("Turn: Player 2", True, white)
+
 
 
     display.blit(wood, (0,0)); display.blit(wood, (894,0)); display.blit(wood, (0,894)); display.blit(wood, (894,894))      # Creates Background
@@ -164,8 +158,9 @@ while running:                                              # Main Game Loop
         for j in range(len(boardPc[i])):
             display.blit(boardPc[i][j].img, (boardPc[i][j].posx, boardPc[i][j].posy))
 
+    display.blit(text, (187,10))
+
     pygame.display.update()                   # Updates the creen (new frame)
     clock.tick(60)                            # Sets the fps to a locked 60 (change to 30 if you have integrated graphics)
-    
 
 pygame.quit()                                 # Closes the window and ends the program
