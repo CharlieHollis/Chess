@@ -63,6 +63,7 @@ for i in range(8):                      # Creates the board sections object arra
 
 wood = pygame.image.load(os.path.join("imgs","wood.jpg"))           # Bg img
 selectedPath = os.path.join("imgs", "selected.png")                 # Selected img path
+circlePath = os.path.join("imgs", "circle.png")
 
 
 clock = pygame.time.Clock()                             # Creates a clock variable to lock the fps
@@ -95,7 +96,7 @@ while running:                                              # Main Game Loop
                     pressx = mousePressedPos[0]; pressy = mousePressedPos[1]
                     posx = (pressx - 100) / 100; posy = (pressy - 100) / 100
                     if finding:
-                        if boardPc[int(posy)][int(posx)].name != "blank":
+                        if boardPc[int(posy)][int(posx)].name != "blank" and turn % 2 == 0 and boardPc[int(posy)][int(posx)].value == 0:
                             findingName = boardPc[int(posy)][int(posx)].name
                             MoveablePlaces = boardPc[int(posy)][int(posx)].moveablePlaces(boardPc)
                             for i in range(len(MoveablePlaces)):
@@ -107,9 +108,29 @@ while running:                                              # Main Game Loop
                                     pass
                                 else:
                                     if boardPc[movPosy][movPosx].name == "blank":
-                                        boardPc[movPosy][movPosx].setAlpha(selectedPath)        
+                                        boardPc[movPosy][movPosx].setAlpha(selectedPath)  
+                                
                             findingPos = (int(posx),int(posy))
                             finding = False
+                            turn += 1
+
+                        elif boardPc[int(posy)][int(posx)].name != "blank" and turn % 2 != 0 and boardPc[int(posy)][int(posx)].value == 1:
+                            findingName = boardPc[int(posy)][int(posx)].name
+                            MoveablePlaces = boardPc[int(posy)][int(posx)].moveablePlaces(boardPc)
+                            for i in range(len(MoveablePlaces)):
+                                movPosx = MoveablePlaces[i][0]
+                                movPosy = MoveablePlaces[i][1]
+                                if movPosx >= 8 or movPosy >= 8:
+                                    pass
+                                elif movPosx <= -1 or movPosy <= -1:
+                                    pass
+                                else:
+                                    if boardPc[movPosy][movPosx].name == "blank":
+                                        boardPc[movPosy][movPosx].setAlpha(selectedPath)  
+                                
+                            findingPos = (int(posx),int(posy))
+                            finding = False
+                            turn += 1
 
                     elif not finding:
                         if boardPc[int(posy)][int(posx)].value != boardPc[findingPos[1]][findingPos[0]].value and (int(posx),int(posy)) in MoveablePlaces:
@@ -145,5 +166,6 @@ while running:                                              # Main Game Loop
 
     pygame.display.update()                   # Updates the creen (new frame)
     clock.tick(60)                            # Sets the fps to a locked 60 (change to 30 if you have integrated graphics)
+    
 
 pygame.quit()                                 # Closes the window and ends the program
