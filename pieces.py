@@ -39,6 +39,7 @@ class pieces(object):
                                       (int((self.posx - 100) / 100), int((self.posy - 300) / 100))]
                 
                 for i in self.possiblePlaces:
+                    
                     if piecesArray[i[1]][i[0]].value == self.value or self.oppPos == 1:
                         break
                     elif int(piecesArray[i[1]][i[0]].value) == 1 and self.oppPos == 0:
