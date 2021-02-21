@@ -16,6 +16,7 @@ selected = (186,202,43)
 
 boardBg = []
 boardPc = []
+circleImgArray = []
 
 def checkSquare(posx, posy):                                # Checks if the piece clicked on is a blank piece or not
     if boardPc[int(posy)][int(posx)].name != "blank":
@@ -64,7 +65,17 @@ for i in range(8):                      # Creates the board sections object arra
 
 wood = pygame.image.load(os.path.join("imgs","wood.jpg"))           # Bg img
 selectedPath = os.path.join("imgs", "selected.png")                 # Selected img path
-circlePath = os.path.join("imgs", "circle.png")
+
+
+
+for i in range(8):
+    circleImgArray.append([])
+    for j in range(8):
+        circleImgArray[i].append(bs.board(os.path.join("imgs", "circle.png"), 100+j*100, 100+i*100, i+j))
+
+for i in range(8):
+    for j in range(8):
+        circleImgArray[i][j].colour.set_alpha(0)
 
 
 clock = pygame.time.Clock()                             # Creates a clock variable to lock the fps
@@ -112,7 +123,27 @@ while running:                                              # Main Game Loop
                                         boardPc[movPosy][movPosx].setAlpha(selectedPath)  
                             for i in MoveablePlaces:
                                 if boardPc[i[1]][i[0]].value == 1:
-                                    
+                                    circleImgArray[i[1]][i[0]].colour.set_alpha(128)
+                                
+                            findingPos = (int(posx),int(posy))
+                            finding = False
+                        
+                        if boardPc[int(posy)][int(posx)].name != "blank" and turn % 2 == 1 and boardPc[int(posy)][int(posx)].value == 1:
+                            findingName = boardPc[int(posy)][int(posx)].name
+                            MoveablePlaces = boardPc[int(posy)][int(posx)].moveablePlaces(boardPc)
+                            for i in range(len(MoveablePlaces)):
+                                movPosx = MoveablePlaces[i][0]
+                                movPosy = MoveablePlaces[i][1]
+                                if movPosx >= 8 or movPosy >= 8:
+                                    pass
+                                elif movPosx <= -1 or movPosy <= -1:
+                                    pass
+                                else:
+                                    if boardPc[movPosy][movPosx].name == "blank":
+                                        boardPc[movPosy][movPosx].setAlpha(selectedPath)  
+                            for i in MoveablePlaces:
+                                if boardPc[i[1]][i[0]].value == 0:
+                                    circleImgArray[i[1]][i[0]].colour.set_alpha(128)
                                 
                             findingPos = (int(posx),int(posy))
                             finding = False
@@ -140,6 +171,9 @@ while running:                                              # Main Game Loop
                                 for j in range(len(boardPc[i])):
                                     if boardPc[i][j].name == "blank":
                                         boardPc[i][j].returnAlpha(os.path.join("imgs","blank.png"))
+                            for i in range(len(circleImgArray)):
+                                for j in range(len(circleImgArray[i])):
+                                    circleImgArray[i][j].colour.set_alpha(0)
                             turn += 1
         
     if turn % 2 == 0:
@@ -157,6 +191,10 @@ while running:                                              # Main Game Loop
     for i in range(len(boardPc)):             # Creates pieces on the board
         for j in range(len(boardPc[i])):
             display.blit(boardPc[i][j].img, (boardPc[i][j].posx, boardPc[i][j].posy))
+
+    for i in range(len(circleImgArray)):
+        for j in range(len(circleImgArray[i])):
+            display.blit(circleImgArray[i][j].colour, (circleImgArray[i][j].posx, circleImgArray[i][j].posy))
 
     display.blit(text, (187,10))
 
