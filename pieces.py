@@ -60,13 +60,7 @@ class pieces(object):
 
                 return self.moveable
             
-
-
-
-
-
-
-
+            
             if self.name == "whiteknight":                                                  # TODO:: Name
                 return [(int((self.posx - 200) / 100), int((self.posy - 300) / 100)),
                         (int((self.posx + 0  ) / 100), int((self.posy - 300) / 100)),
