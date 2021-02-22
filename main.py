@@ -127,7 +127,7 @@ while running:                                              # Main Game Loop
                                 elif i[0] <= -1 or i[1] <= -1:
                                     pass
                                 elif boardPc[i[1]][i[0]].value == 1:
-                                    circleImgArray[i[1]][i[0]].colour.set_alpha(128)
+                                    circleImgArray[i[1]][i[0]].colour.set_alpha(192)
                                 
                             findingPos = (int(posx),int(posy))
                             finding = False
@@ -151,7 +151,7 @@ while running:                                              # Main Game Loop
                                 elif i[0] <= -1 or i[1] <= -1:
                                     pass
                                 elif boardPc[i[1]][i[0]].value == 0:
-                                    circleImgArray[i[1]][i[0]].colour.set_alpha(128)
+                                    circleImgArray[i[1]][i[0]].colour.set_alpha(192)
                                 
                             findingPos = (int(posx),int(posy))
                             finding = False
@@ -221,9 +221,28 @@ while running:                                              # Main Game Loop
     for kingplaces in kingPlaces:
         if kingplaces in checkedArray:
             emptyCheck.append(kingplaces)
-        
+    
     if len(emptyCheck) == len(kingPlaces):
         wonText = font.render("Player 1 has won!!", True, white)
+        display.blit(wonText, (100,488))
+    
+
+    for i in range(len(boardPc)):
+        for j in range(len(boardPc[i])):
+            if boardPc[i][j].value == 1:
+                for checkPlaces in boardPc[i][j].moveablePlaces(boardPc):
+                    checkedArray.append(checkPlaces)
+            if boardPc[i][j].name == "whiteking":
+                kingPlaces.append((boardPc[i][j].arrayPosx, boardPc[i][j].arrayPosy))
+                for kingplaces in boardPc[i][j].moveablePlaces(boardPc):
+                    kingPlaces.append(kingplaces)
+    emptyCheck = []
+    for kingplaces in kingPlaces:
+        if kingplaces in checkedArray:
+            emptyCheck.append(kingplaces)
+        
+    if len(emptyCheck) == len(kingPlaces):
+        wonText = font.render("Player 2 has won!!", True, white)
         display.blit(wonText, (100,488))
 
     pygame.display.update()                   # Updates the creen (new frame)
