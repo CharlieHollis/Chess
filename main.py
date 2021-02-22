@@ -208,42 +208,45 @@ while running:                                              # Main Game Loop
 
     display.blit(text, (187,10))
 
-    for i in range(len(boardPc)):
-        for j in range(len(boardPc[i])):
-            if boardPc[i][j].value == 0:
-                for checkPlaces in boardPc[i][j].moveablePlaces(boardPc):
-                    checkedArray.append(checkPlaces)
-            if boardPc[i][j].name == "blackking":
-                kingPlaces.append((boardPc[i][j].arrayPosx, boardPc[i][j].arrayPosy))
-                for kingplaces in boardPc[i][j].moveablePlaces(boardPc):
-                    kingPlaces.append(kingplaces)
-    emptyCheck = []
-    for kingplaces in kingPlaces:
-        if kingplaces in checkedArray:
-            emptyCheck.append(kingplaces)
+
+    # TODO: Checkmate algorithm needs work done to it.
+
+    # for i in range(len(boardPc)):
+    #     for j in range(len(boardPc[i])):
+    #         if boardPc[i][j].value == 0:
+    #             for checkPlaces in boardPc[i][j].moveablePlaces(boardPc):
+    #                 checkedArray.append(checkPlaces)
+    #         if boardPc[i][j].name == "blackking":
+    #             kingPlaces.append((boardPc[i][j].arrayPosx, boardPc[i][j].arrayPosy))
+    #             for kingplaces in boardPc[i][j].moveablePlaces(boardPc):
+    #                 kingPlaces.append(kingplaces)
+    # emptyCheck = []
+    # for kingplaces in kingPlaces:
+    #     if kingplaces in checkedArray:
+    #         emptyCheck.append(kingplaces)
     
-    if len(emptyCheck) == len(kingPlaces):
-        wonText = font.render("Player 1 has won!!", True, white)
-        display.blit(wonText, (100,488))
+    # if len(emptyCheck) == len(kingPlaces):
+    #     wonText = font.render("Player 1 has won!!", True, white)
+    #     display.blit(wonText, (100,488))
     
 
-    for i in range(len(boardPc)):
-        for j in range(len(boardPc[i])):
-            if boardPc[i][j].value == 1:
-                for checkPlaces in boardPc[i][j].moveablePlaces(boardPc):
-                    checkedArray.append(checkPlaces)
-            if boardPc[i][j].name == "whiteking":
-                kingPlaces.append((boardPc[i][j].arrayPosx, boardPc[i][j].arrayPosy))
-                for kingplaces in boardPc[i][j].moveablePlaces(boardPc):
-                    kingPlaces.append(kingplaces)
-    emptyCheck = []
-    for kingplaces in kingPlaces:
-        if kingplaces in checkedArray:
-            emptyCheck.append(kingplaces)
+    # for i in range(len(boardPc)):
+    #     for j in range(len(boardPc[i])):
+    #         if boardPc[i][j].value == 1:
+    #             for checkPlaces in boardPc[i][j].moveablePlaces(boardPc):
+    #                 checkedArray.append(checkPlaces)
+    #         if boardPc[i][j].name == "whiteking":
+    #             kingPlaces.append((boardPc[i][j].arrayPosx, boardPc[i][j].arrayPosy))
+    #             for kingplaces in boardPc[i][j].moveablePlaces(boardPc):
+    #                 kingPlaces.append(kingplaces)
+    # emptyCheck = []
+    # for kingplaces in kingPlaces:
+    #     if kingplaces in checkedArray:
+    #         emptyCheck.append(kingplaces)
         
-    if len(emptyCheck) == len(kingPlaces):
-        wonText = font.render("Player 2 has won!!", True, white)
-        display.blit(wonText, (100,488))
+    # if len(emptyCheck) == len(kingPlaces):
+    #     wonText = font.render("Player 2 has won!!", True, white)
+    #     display.blit(wonText, (100,488))
 
     pygame.display.update()                   # Updates the creen (new frame)
     clock.tick(60)                            # Sets the fps to a locked 60 (change to 30 if you have integrated graphics)
