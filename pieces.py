@@ -34,11 +34,11 @@ class pieces(object):
         self.oppPos = 0
 
         if self.value == 0:
-            if self.name == "whitepawn":                                            # TODO:: Name
-                self.possiblePlaces = [(int((self.posx - 100) / 100), int((self.posy - 200) / 100)),                        # TODO:: Pos
+            if self.name == "whitepawn":                                            
+                self.possiblePlaces = [(int((self.posx - 100) / 100), int((self.posy - 200) / 100)),                        
                                       (int((self.posx - 100) / 100), int((self.posy - 300) / 100))]
                 
-                self.pawntakes = [(int((self.posx - 200) / 100), int((self.posy - 200) / 100)),                             # TODO:: Pos
+                self.pawntakes = [(int((self.posx - 200) / 100), int((self.posy - 200) / 100)),                             
                                   (int((self.posx - 0  ) / 100), int((self.posy - 200) / 100))]
 
                 for i in self.possiblePlaces:
@@ -49,11 +49,11 @@ class pieces(object):
                 
                 
                 for i in self.pawntakes:
-                    if i[1] <= -1:                                                              # TODO:: Values
+                    if i[1] <= -1:                                                              
                         pass
                     elif i[0] >= 8 or i[0] <= -1:                                                                 
                         pass    
-                    elif int(piecesArray[i[1]][i[0]].value) != 1:                               # TODO:: 1 to 0
+                    elif int(piecesArray[i[1]][i[0]].value) != 1:                               
                         pass
                     else:
                         self.moveable.append(i)
