@@ -1,5 +1,7 @@
-import pygame
 import os
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
+import pygame
+
 
 import boardSection as bs 
 import pieces as pc
@@ -17,11 +19,6 @@ selected = (186,202,43)
 boardBg = []
 boardPc = []
 circleImgArray = []
-
-def checkSquare(posx, posy):                                # Checks if the piece clicked on is a blank piece or not
-    if boardPc[int(posy)][int(posx)].name != "blank":
-        return True
-    else: return False
 
 for i in range(8):                      # Creates the board pieces object array
     boardPc.append([])
@@ -98,6 +95,9 @@ while running:                                              # Main Game Loop
                     for j in range(len(boardPc[i])):
                         if boardPc[i][j].name == "blank":
                             boardPc[i][j].returnAlpha(os.path.join("imgs","blank.png"))
+                for i in range(len(circleImgArray)):
+                                for j in range(len(circleImgArray[i])):
+                                    circleImgArray[i][j].colour.set_alpha(0)
                 finding = True                
 
 
@@ -188,7 +188,9 @@ while running:                                              # Main Game Loop
         text = font.render("Turn: Player 1", True, white)
     else: text = font.render("Turn: Player 2", True, white)
 
-
+    check = False
+    checkedArray = []
+    kingPlaces = []
 
     display.blit(wood, (0,0)); display.blit(wood, (894,0)); display.blit(wood, (0,894)); display.blit(wood, (894,894))      # Creates Background
 
@@ -205,6 +207,24 @@ while running:                                              # Main Game Loop
             display.blit(circleImgArray[i][j].colour, (circleImgArray[i][j].posx, circleImgArray[i][j].posy))
 
     display.blit(text, (187,10))
+
+    for i in range(len(boardPc)):
+        for j in range(len(boardPc[i])):
+            if boardPc[i][j].value == 0:
+                for checkPlaces in boardPc[i][j].moveablePlaces(boardPc):
+                    checkedArray.append(checkPlaces)
+            if boardPc[i][j].name == "blackking":
+                kingPlaces.append((boardPc[i][j].arrayPosx, boardPc[i][j].arrayPosy))
+                for kingplaces in boardPc[i][j].moveablePlaces(boardPc):
+                    kingPlaces.append(kingplaces)
+    emptyCheck = []
+    for kingplaces in kingPlaces:
+        if kingplaces in checkedArray:
+            emptyCheck.append(kingplaces)
+        
+    if len(emptyCheck) == len(kingPlaces):
+        wonText = font.render("Player 1 has won!!", True, white)
+        display.blit(wonText, (100,488))
 
     pygame.display.update()                   # Updates the creen (new frame)
     clock.tick(60)                            # Sets the fps to a locked 60 (change to 30 if you have integrated graphics)
