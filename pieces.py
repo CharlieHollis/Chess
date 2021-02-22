@@ -51,17 +51,17 @@ class pieces(object):
                 for i in self.pawntakes:
                     if i[1] <= -1:                                                              # TODO:: Values
                         pass
-                    elif i[0] >= 8 or i[0] <= 1:                                                                 
+                    elif i[0] >= 8 or i[0] <= -1:                                                                 
                         pass    
                     elif int(piecesArray[i[1]][i[0]].value) != 1:                               # TODO:: 1 to 0
                         pass
                     else:
                         self.moveable.append(i)
-
+                
                 return self.moveable
             
-            
-            if self.name == "whiteknight":                                                  # TODO:: Name
+
+            if self.name == "whiteknight":                                                  
                 return [(int((self.posx - 200) / 100), int((self.posy - 300) / 100)),
                         (int((self.posx + 0  ) / 100), int((self.posy - 300) / 100)),
                         (int((self.posx + 100) / 100), int((self.posy - 200) / 100)),
@@ -71,7 +71,7 @@ class pieces(object):
                         (int((self.posx - 300) / 100), int((self.posy + 0  ) / 100)),
                         (int((self.posx - 300) / 100), int((self.posy - 200) / 100))]
             
-            if self.name == "whiterook":                                                    # TODO:: Name
+            if self.name == "whiterook":                                                    
                 self.possiblePlaces = [[(int((self.posx - 200) / 100), int((self.posy - 100) / 100)),
                                         (int((self.posx - 300) / 100), int((self.posy - 100) / 100)),
                                         (int((self.posx - 400) / 100), int((self.posy - 100) / 100)),
@@ -121,7 +121,7 @@ class pieces(object):
                 
                 return self.moveable
 
-            if self.name == "whitebishop":                                              # TODO:: Name
+            if self.name == "whitebishop":                                              
                 self.possiblePlaces = [[(int((self.posx - 200) / 100), int((self.posy - 200) / 100)),
                                         (int((self.posx - 300) / 100), int((self.posy - 300) / 100)),
                                         (int((self.posx - 400) / 100), int((self.posy - 400) / 100)),
@@ -173,7 +173,7 @@ class pieces(object):
 
                 return self.moveable
 
-            if self.name == "whitequeen":                                           # TODO:: Name
+            if self.name == "whitequeen":                                           
                 self.possiblePlaces = [[(int((self.posx - 200) / 100), int((self.posy - 200) / 100)),
                                         (int((self.posx - 300) / 100), int((self.posy - 300) / 100)),
                                         (int((self.posx - 400) / 100), int((self.posy - 400) / 100)),
@@ -255,7 +255,7 @@ class pieces(object):
                 
                 return self.moveable
             
-            if self.name == "whiteking":                                            # TODO:: Name
+            if self.name == "whiteking":                                            
                 self.possiblePlaces = [(int((self.posx - 200) / 100), int((self.posy - 200) / 100)),
                                        (int((self.posx - 100) / 100), int((self.posy - 200) / 100)),
                                        (int((self.posx - 0  ) / 100), int((self.posy - 200) / 100)),
@@ -293,7 +293,7 @@ class pieces(object):
                 for i in self.pawntakes:
                     if i[1] >= 8:                                                              
                         pass
-                    elif i[0] >= 8 or i[0] <= 1:                                                                 
+                    elif i[0] >= 8 or i[0] <= -1:                                                                 
                         pass    
                     elif int(piecesArray[i[1]][i[0]].value) != 0:                               
                         pass
